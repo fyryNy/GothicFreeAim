@@ -137,6 +137,11 @@ func int GFA_GetActiveSpellIsScroll(var C_Npc slf) {
         call = CALL_End();
     };
 
+    // No selected spell. The native integer overload only checks the upper bound.
+    if (spellNr < 0) {
+        return 0;
+    };
+
     // Retrieve spell item from spell number
     const int call2 = 0;
     var int itemPtr;
@@ -309,11 +314,17 @@ func void GFA_SetFocusAndTarget(var int focusPtr) {
         };
     };
 
+    // A focus can be an item, but SetEnemy requires an NPC or null.
+    var int enemyPtr; enemyPtr = 0;
+    if (Hlp_Is_oCNpc(focusPtr)) {
+        enemyPtr = focusPtr;
+    };
+
     // Update the enemy NPC (also properly with an engine call)
-    if (focusPtr != her.enemy) {
+    if (enemyPtr != her.enemy) {
         const int call2 = 0;
         if (CALL_Begin(call2)) {
-            CALL_PtrParam(_@(focusPtr));
+            CALL_PtrParam(_@(enemyPtr));
             CALL__thiscall(_@(herPtr), oCNpc__SetEnemy);
             call2 = CALL_End();
         };
@@ -503,6 +514,7 @@ func int GFA_Wld_StopEffect_Ext(var string effectName, var int originInst, var i
 
         if (!GFA_ObjCheckInheritance(originInst, zCVob__classDef)) {
             MEM_Warn("GFA_Wld_StopEffect_Ext: Origin is not a valid vob");
+            MEM_ArrayFree(vobArrayPtr);
             return 0;
         };
     };
@@ -519,6 +531,7 @@ func int GFA_Wld_StopEffect_Ext(var string effectName, var int originInst, var i
 
         if (!GFA_ObjCheckInheritance(targetInst, zCVob__classDef)) {
             MEM_Warn("GFA_Wld_StopEffect_Ext: Target is not a valid vob");
+            MEM_ArrayFree(vobArrayPtr);
             return 0;
         };
     };

@@ -220,7 +220,8 @@ func int GFA_AimRay(var int distance, var int focusType, var int vobPtr, var int
                 var C_Npc target; target = _^(her.focus_vob);
 
                 // More detailed focus type tests
-                if (focusType == TARGET_TYPE_NPCS)                                             // Focus any NPC
+                if (focusType == TARGET_TYPE_ALL)                                              // Focus items or NPCs
+                || (focusType == TARGET_TYPE_NPCS)                                             // Focus any NPC
                 || ((focusType == TARGET_TYPE_ORCS) && (target.guild > GFA_GIL_SEPERATOR_ORC)) // Only focus orcs
                 || ((focusType == TARGET_TYPE_HUMANS) && (target.guild < GIL_SEPERATOR_HUM))   // Only focus humans
                 || ((focusType == TARGET_TYPE_UNDEAD) && (GFA_NpcIsUndead(target))) {          // Only focus undead NPCs

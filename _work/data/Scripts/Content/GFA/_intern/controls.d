@@ -84,12 +84,12 @@ func void GFA_TurnPlayerModel() {
 
     // Turn player model
     var int hAniCtrl; hAniCtrl = her.anictrl;
-    const int call = 0; var int zero;
+    const int call = 0; var int zero; var int ret;
     if (CALL_Begin(call)) {
         CALL_IntParam(_@(zero)); // 0 = disable turn animation (there is none while aiming anyways)
         CALL_FloatParam(_@(deltaX));
         CALL_RetValIsFloat();
-        CALL_PutRetValTo(0);
+        CALL_PutRetValTo(_@(ret));
         CALL__thiscall(_@(hAniCtrl), oCAniCtrl_Human__Turn);
         call = CALL_End();
     };
@@ -331,6 +331,7 @@ func void GFA_DisableMagicDuringStrafing(var int on) {
         return;
     };
 
+    on = (on != 0); // Feature flags may pass 2 instead of boolean 1.
     const int SET = 0;
     if (on == SET) {
         return; // No change necessary
@@ -345,7 +346,7 @@ func void GFA_DisableMagicDuringStrafing(var int on) {
         MEM_WriteByte(oCNpc__EV_Strafe_magicCombat, /*E8*/ 232); // Revert to default call
         MEM_WriteInt(oCNpc__EV_Strafe_magicCombat+1, oCNpc__FightAttackMagic-oCNpc__EV_Strafe_magicCombat-5);
     };
-    SET = !SET;
+    SET = on;
 };
 
 

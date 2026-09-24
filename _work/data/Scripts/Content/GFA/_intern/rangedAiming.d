@@ -39,6 +39,7 @@ func void GFA_RangedIdle() {
             // Retrieve reticle specs and draw/update it on screen
             GFA_GetRangedReticle_(target, distance, reticlePtr); // Retrieve reticle specs
             GFA_InsertReticle(reticlePtr);
+            reticle.texture = ""; // Release the string before freeing its container.
             MEM_Free(reticlePtr);
         };
 
@@ -92,6 +93,7 @@ func void GFA_RangedAiming() {
     // Retrieve reticle specs and draw/update it on screen
     GFA_GetRangedReticle_(target, distance, reticlePtr); // Retrieve reticle specs
     GFA_InsertReticle(reticlePtr);
+    reticle.texture = ""; // Release the string before freeing its container.
     MEM_Free(reticlePtr);
 
     // Pointing distance: Take the max distance, otherwise it looks strange on close range targets

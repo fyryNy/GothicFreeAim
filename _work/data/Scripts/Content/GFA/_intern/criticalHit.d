@@ -400,6 +400,7 @@ func void GFA_CH_DetectCriticalHit() {
 
     // Overwrite base damage value
     MEM_WriteInt(damagePtr, damage.value);
+    damage.info = ""; // Release the string before freeing its container.
     MEM_Free(dmgMsgPtr);
 };
 

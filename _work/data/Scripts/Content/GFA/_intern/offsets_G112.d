@@ -15,6 +15,7 @@
 /*
  * All addresses used (Gothic Sequel). Hooked functions indicated by the hook length in the in-line comments
  */
+const int zCObject__Release                         =  4381488; //0x42DB30
 const int zCVob__classDef                            =  9556416; //0x91D1C0
 const int zCVob__SetPositionWorld                    =  6352672; //0x60EF20
 const int zCVob__GetRigidBody                        =  6236544; //0x5F2980
@@ -67,7 +68,7 @@ const int oCItem__RemoveEffect                       =  0;                      
 const int oCItem__MultiSlot                          =  6944912; //0x69F890
 const int oCMag_Book__GetSelectedSpell               =  4692496; //0x479A10
 const int oCMag_Book__GetSelectedSpellNr             =  4692592; //0x479A70
-const int oCMag_Book__GetSpellItem                   =  4702448; //0x47C0F0
+const int oCMag_Book__GetSpellItem                   =  4702416; //0x47C0D0 // GetSpellItem(int)
 const int oCMag_Book__StopSelectedSpell              =  4692928; //0x479BC0
 const int oCSpell__Open                              =  4750368; //0x487C20
 const int zCProgMeshProto__classDef                  =  9484792; //0x90B9F8

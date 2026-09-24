@@ -15,6 +15,7 @@
 /*
  * All addresses used (Gothic 1). Hooked functions indicated by the hook length in the in-line comments
  */
+const int zCObject__Release                         =  4369456; //0x42AC30
 const int zCVob__classDef                            =  9269976; //0x8D72D8
 const int zCVob__SetPositionWorld                    =  6219344; //0x5EE650
 const int zCVob__GetRigidBody                        =  6109088; //0x5D37A0
@@ -67,7 +68,7 @@ const int oCItem__RemoveEffect                       =  0;                      
 const int oCItem__MultiSlot                          =  6758192; //0x671F30
 const int oCMag_Book__GetSelectedSpell               =  4655808; //0x470AC0
 const int oCMag_Book__GetSelectedSpellNr             =  4655888; //0x470B10
-const int oCMag_Book__GetSpellItem                   =  4664896; //0x472E40
+const int oCMag_Book__GetSpellItem                   =  4664864; //0x472E20 // GetSpellItem(int)
 const int oCMag_Book__StopSelectedSpell              =  4656208; //0x470C50
 const int oCSpell__Open                              =  4707312; //0x47D3F0
 const int zCProgMeshProto__classDef                  =  9198408; //0x8C5B48

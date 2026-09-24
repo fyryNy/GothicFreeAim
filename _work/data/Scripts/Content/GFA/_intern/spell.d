@@ -138,6 +138,7 @@ func void GFA_SpellAiming() {
     // Retrieve reticle specs and draw/update it on screen
     GFA_GetSpellReticle_(target, spell, distance, reticlePtr);
     GFA_InsertReticle(reticlePtr);
+    reticle.texture = ""; // Release the string before freeing its container.
     MEM_Free(reticlePtr);
 };
 
@@ -330,7 +331,13 @@ func void GFA_ResetSpell() {
         call = CALL_End();
     };
 
-    // Re-open the spell with initial spell level FX
+    // Stopping can destroy the old spell and replace it with a new instance.
+    spell = GFA_GetActiveSpellInst(hero);
+    if (!_@(spell)) {
+        return;
+    };
+
+    // Re-open the replacement spell with initial spell level FX.
     var int spellPtr; spellPtr = _@(spell)-oCSpell_C_Spell_offset;
     const int call2 = 0;
     if (CALL_Begin(call2)) {

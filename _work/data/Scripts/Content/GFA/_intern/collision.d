@@ -302,7 +302,7 @@ func void GFA_CC_ProjectileCollisionWithWorld() {
         if (!GFA_ObjCheckInheritance(vob.visual, zCProgMeshProto__classDef)) {
             // Adjust the projectile to deflect (Gothic 2 does it by default)
             if (GOTHIC_BASE_VERSION == 1) || (GOTHIC_BASE_VERSION == 112) {
-                GFA_CC_ProjectileDeflect(rigidBody);
+                GFA_CC_ProjectileDeflect(projectile._zCVob_rigidBody);
             };
 
             // Increase collision counter before leaving this function

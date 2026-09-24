@@ -130,7 +130,7 @@ func int GFA_SetupAimVob(var int posPtr) {
             MEM_Info("GFA_SetupAimVob: Creating aim vob."); // Should be printed only once ever (each world)
         };
 
-        // This actually allocates the memory, so no need to care about freeing
+        // The new item owns one reference, released after insertion into the world.
         CALL__cdecl(oCItem___CreateNewInstance);
         vobPtr = CALL_RetValAsPtr();
 
@@ -152,6 +152,9 @@ func int GFA_SetupAimVob(var int posPtr) {
         // Set to non-focusable
         var C_Item itm; itm = _^(vobPtr);
         itm.flags = itm.flags | GFA_ITEM_NFOCUS;
+
+        // The world owns the item now. Drop only the creator's reference.
+        CALL__thiscall(vobPtr, zCObject__Release);
     };
 
     // Update position and rotation

@@ -15,6 +15,7 @@
 /*
  * All addresses used (Gothic 2 Classic). Hooked functions indicated by the hook length in the in-line comments
  */
+const int zCObject__Release                         =  4244240; //0x40C310
 const int zCVob__classDef                            =  9948544; //0x97CD80
 const int zCVob__SetPositionWorld                    =  6374544; //0x614490
 const int zCVob__GetRigidBody                        =  6257520; //0x5F7B70
@@ -67,7 +68,7 @@ const int oCItem__RemoveEffect                       =  0;                      
 const int oCItem__MultiSlot                          =  7030896; //0x6B4870                // Not used for Gothic 2
 const int oCMag_Book__GetSelectedSpell               =  4678624; //0x4763E0
 const int oCMag_Book__GetSelectedSpellNr             =  4678704; //0x476430                // Not used for Gothic 2
-const int oCMag_Book__GetSpellItem                   =  4687968; //0x478860                // Not used for Gothic 2
+const int oCMag_Book__GetSpellItem                   =  4687936; //0x478840 // GetSpellItem(int)
 const int oCMag_Book__StopSelectedSpell              =  4679024; //0x476570
 const int oCSpell__Open                              =  4735616; //0x484280
 const int zCProgMeshProto__classDef                  =  9815072; //0x95C420
